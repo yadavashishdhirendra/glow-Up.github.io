@@ -1,0 +1,184 @@
+/* login banner css style starts here */
+.banner-wrapper {
+    background-image: url('../Assets/Image/Background IMAGE.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-grid-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+
+.login-grid-row>div:nth-child(2)>img {
+    width: 100%;
+}
+
+/* login banner css style ends here */
+
+/* login form css style starts here */
+
+.login-grid-row>div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-grid-row>div:nth-child(1)>img {
+    width: 220px;
+    margin-bottom: 25px;
+}
+
+.login-grid-row>div:nth-child(1)>p:nth-child(2) {
+    font-family: 'Montserrat', 'sans-serif';
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.login-grid-row>div:nth-child(1)>p:nth-child(3) {
+    font-family: 'Montserrat', 'sans-serif';
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.login-grid-row>div:nth-child(1)>p:nth-child(3)>span {
+    color: #D52976;
+    font-weight: 800;
+}
+
+.login-form-wrapper>div>input {
+    position: relative;
+    top: 0;
+    height: 50px;
+    width: 400px;
+    padding: 0px 10px 0px 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #D0B0AB;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    outline: none;
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: 700;
+}
+
+.login-form-wrapper {
+    margin-top: 1rem;
+}
+
+.login-form-wrapper>div>label {
+    position: relative;
+    top: 7px;
+    z-index: 999;
+    background-color: #F2DFDC;
+    padding: 3px 15px 3px 15px;
+    border-radius: 25px;
+    left: 10px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-size: 12px;
+    font-weight: 700;
+    color: #5B5B5B;
+}
+
+.login-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.login-btn>button {
+    background-color: #9B7ABF;
+    padding: 10px 30px 10px 30px;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* login form css style ends here */
+
+/* some responsive media queries for login page css starts here */
+@media screen and (max-width: 1080px) {
+    .login-grid-row>div:nth-child(1) {
+        margin-top: 20rem;
+    }
+
+    .login-grid-row>div:nth-child(2) {
+        display: flex;
+        justify-content: center;
+    }
+
+    .login-grid-row>div:nth-child(2)>img {
+        width: 50%;
+    }
+
+    .login-grid-row {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .login-grid-row>div:nth-child(1) {
+        margin-top: 10rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .login-grid-row>div:nth-child(2)>img {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .login-form-wrapper>div>input {
+        width: 100%;
+    }
+
+    .banner-wrapper {
+        padding: 20px 20px 20px 20px;
+    }
+
+    .login-grid-row>div:nth-child(1) {
+        justify-content: initial;
+        align-items: initial;
+    }
+
+    .login-grid-row>div:nth-child(1) {
+        margin-top: 1rem;
+    }
+
+    .login-grid-row>div:nth-child(1)>img {
+        display: flex;
+        justify-content: center;
+        margin: 0px auto 25px auto;
+    }
+
+    .login-grid-row>div:nth-child(2)>img {
+        width: 80%;
+    }
+}
+
+/* some responsive media queries for login page css ends here */

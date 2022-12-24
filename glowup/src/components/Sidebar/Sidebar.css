@@ -1,0 +1,80 @@
+.relative-menu {
+    height: 100vh !important;
+    position: fixed;
+    top: 0;
+    max-width: 300px;
+    width: 300px;
+    background: linear-gradient(184.96deg, #1E1E25 100%, rgba(30, 30, 37, 0.68) 100%);
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    z-index: 999;
+}
+
+.glowup-sidebar-logo {
+    margin-top: 3rem;
+    padding-left: 1rem;
+}
+
+.glowup-sidebar-logo>img {
+    width: 180px;
+}
+
+.ps-menu-label {
+    font-family: 'Montserrat', 'sans-serif';
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.MuiSvgIcon-root {
+    color: white;
+}
+
+.css-1bdadyq{
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+
+.css-1bdadyq:hover {
+    background-color: #9B7ABF !important;
+}
+
+
+.toggle-icon {
+    position: relative;
+    border: none;
+    z-index: 99999;
+    background-color: #9B7ABF;
+    width: 45px !important;
+    height: 45px !important;
+    cursor: pointer;
+    border-bottom-right-radius: 50px;
+}
+
+.toggle-icon>svg{
+    color: white !important;
+    font-size: 2rem !important;
+    position: relative;
+    top: -4px;
+    left: -5px;
+}
+
+.logout-session{
+    cursor: pointer;
+    position: absolute;
+    bottom: 30px;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    color: white;
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: 600;
+    font-size: 14px;
+}

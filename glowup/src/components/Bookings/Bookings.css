@@ -1,0 +1,130 @@
+body{
+    background-color: #FAF4FF;
+}
+
+.MuiDataGrid-root .MuiDataGrid-overlay{
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: bolder;
+}
+.data-table-wrapper {
+    max-width: 1500px;
+    margin: auto;
+    padding: 0px 20px 0px 20px;
+}
+
+.MuiDataGrid-root .MuiDataGrid-columnHeaderTitle {
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: bolder !important;
+}
+
+.MuiDataGrid-root .MuiDataGrid-columnHeader:focus,
+.MuiDataGrid-root .MuiDataGrid-cell:focus {
+    outline: none !important;
+}
+
+.MuiTypography-body2 {
+    font-family: 'Montserrat', 'sans-serif' !important;
+    font-weight: bolder !important;
+}
+
+
+.data-table-wrapper>h1{
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: bolder;
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+}
+
+.data-table-wrapper>p{
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 3.5rem;
+}
+
+.MuiIconButton-label>svg{
+    color: #000 !important;
+}
+
+.MuiDataGrid-root .MuiDataGrid-columnHeader:focus-within, .MuiDataGrid-root .MuiDataGrid-cell:focus-within{
+    outline-offset: initial !important;
+    outline: none !important;
+}
+
+.MuiDataGrid-cell{
+    font-family: 'Montserrat', 'sans-serif';
+    font-size: 14px;
+}
+
+.export-csv{
+    cursor: progress;
+    display: flex;
+    column-gap: 5px;
+    justify-content: center;
+    background-color: #2B2B2B;
+    align-items: center;
+    align-self: flex-end;
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.center-align{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.export-csv>button{
+    align-items: center;
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: bolder;
+    letter-spacing: 1px;
+    cursor: progress;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+
+.MuiDataGrid-root .MuiDataGrid-toolbarContainer {
+    position: absolute;
+    top: -65px;
+    right: 0;
+    background-color: #2B2B2B;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.MuiButton-textPrimary{
+    color: white !important;
+    font-weight: bolder !important;
+    letter-spacing: 1px !important;
+    font-family: 'Montserrat', 'sans-serif' !important;
+}
+
+.MuiButton-textSizeSmall {
+    padding: 4px 15px 7px 15px !important;
+}
+
+.MuiDataGrid-root .MuiDataGrid-cell--textLeft{
+    text-transform: capitalize;
+}
+
+.greenColor{
+    color: green;
+    font-weight: bolder;
+}
+
+.redColor{
+    color: red;
+    font-weight: bolder;
+}
