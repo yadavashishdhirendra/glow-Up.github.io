@@ -1,12 +1,17 @@
-import {configureStore} from '@reduxjs/toolkit';
+import {legacy_createStore as createStore,combineReducers,applyMiddleware} from "redux";
 import { bookingsReducer, userReducer } from './Reducers/UserReducers';
-
-const store = configureStore({
-    reducer: {
+import thunk from "redux-thunk"
+import { composeWithDevTools } from "redux-devtools-extension"
+import { createCoupanReducer, deleteCoupanReducer, fetchAllCoupansReducer } from "./Reducers/CoupanReducers";
+const reducer = combineReducers({
         user: userReducer,
-        bookings: bookingsReducer
-    }
+        bookings: bookingsReducer,
+        newCoupan: createCoupanReducer,
+        coupans: fetchAllCoupansReducer,
+        deleteCoupan:deleteCoupanReducer
 })
 
-
-export default store;
+let initialState = {}
+const midleware = [thunk]
+const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...midleware)))
+export default store

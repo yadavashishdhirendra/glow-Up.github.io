@@ -1,68 +1,67 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { CLEAR_BOOKINGS_ERRORS, GET_BOOKINGS_ERROR, GET_BOOKINGS_REQUEST, GET_BOOKINGS_SUCCESS } from "../constants/BookingsConstants";
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS, LOGOUT_REQUEST, LOGOUT_ERROR, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOAD_USER_ERROR, CLEAR_ERRORS } from "../constants/UserConstants";
 const initialState = {
     isAuthenticated: false,
 };
+export const userReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case LOGIN_REQUEST:
+        case LOGOUT_REQUEST:
+        case LOAD_USER_REQUEST:
+            return {
+                loading: true,
+            }
+        case LOGIN_SUCCESS:
+        case LOAD_USER_SUCCESS:
+            return {
+                loading: false,
+                user: action.payload,
+                isAuthenticated: true
+            }
+        case LOGIN_ERROR:
+        case LOGOUT_ERROR:
+        case LOAD_USER_ERROR:
+            return {
+                loading: false,
+                error: action.payload
+            }
 
-export const userReducer = createReducer(initialState, {
-    // LOGIN
-    LoginRequest: (state) => {
-        state.loading = true;
-    },
-    LoginSuccess: (state, action) => {
-        state.loading = false;
-        state.user = action.payload;
-        state.isAuthenticated = true;
-    },
-
-    LogoutSuccess: (state) => {
-        state.loading = false;
-        state.user = null;
-        state.isAuthenticated = false;
-    },
-
-    LoginFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-        state.isAuthenticated = false;
-    },
-
-    LogoutFail: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-    },
-
-    // LOAD USER
-    LoadUserRequest: (state) => {
-        state.loading = true;
-    },
-    LoadUserSuccess: (state, action) => {
-        state.user = action.payload;
-        state.user = action.payload;
-        state.isAuthenticated = true;
-    },
-    LoadUserFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-        state.isAuthenticated = false;
-    },
-    clearErrors: (state) => {
-        state.error = null
-    },
-})
-
-export const bookingsReducer = createReducer(initialState, {
-    GetBookingsRequest: (state) => {
-        state.loading = true
-    },
-    GetBookingsSuccess: (state, action) => {
-        state.loading = false;
-        state.bookings = action.payload;
-    },
-    GetBookingsFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-    },
-    clearErrors: (state) => {
-        state.error = null
-    },
-})
+        case LOGOUT_SUCCESS:
+            return {
+                loading: false,
+                user: null,
+                isAuthenticated: false
+            }
+        case CLEAR_ERRORS:
+            return {
+                loading: false,
+                error: null
+            }
+        default:
+            return state
+    }
+}
+export const bookingsReducer = (state = {}, action) => {
+    switch (action.type) {
+        case GET_BOOKINGS_REQUEST:
+            return {
+                loading: true
+            }
+        case GET_BOOKINGS_SUCCESS:
+            return {
+                loading: false,
+                bookings: action.payload
+            }
+        case GET_BOOKINGS_ERROR:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        case CLEAR_BOOKINGS_ERRORS:
+            return {
+                error: null
+            }
+        default:
+            return state
+    }
+}

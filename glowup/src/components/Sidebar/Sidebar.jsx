@@ -3,8 +3,9 @@ import { ProSidebarProvider, Menu, MenuItem } from 'react-pro-sidebar';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import Bookings from '@material-ui/icons/Book';
 import ServiceIcon from '@material-ui/icons/Settings';
-import UserIcon from '@material-ui/icons/VerifiedUserSharp';
 import MenuIcon from '@material-ui/icons/Menu';
+import { GiTicket } from "react-icons/gi"
+import {HiTicket} from "react-icons/hi"
 import LogoutIcon from '@material-ui/icons/LockOpen'
 import './Sidebar.css'
 import { Link } from 'react-router-dom'
@@ -51,9 +52,14 @@ const SideBar = () => {
                                     Bookings
                                 </MenuItem>
                             </Link>
-                            <Link to='/'>
-                                <MenuItem icon={<UserIcon />}>
-                                    Customers
+                            <Link to='/coupans'>
+                                <MenuItem icon={<GiTicket style={{color:"white",fontSize:"24px"}}/>}>
+                                    All Coupans
+                                </MenuItem>
+                            </Link>
+                            <Link to='/create-coupans'>
+                                <MenuItem icon={<HiTicket style={{color:"white",fontSize:"24px"}}/>}>
+                                    Create Coupan
                                 </MenuItem>
                             </Link>
                         </Menu>
