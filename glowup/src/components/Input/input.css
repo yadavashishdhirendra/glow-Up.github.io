@@ -46,3 +46,16 @@ div>label {
     font-weight: 700;
     color: #5B5B5B;
 }
+.label{
+       position: relative;
+    top: 7px;
+    z-index: 999;
+    background-color: #F2DFDC;
+    padding: 3px 15px 3px 15px;
+    border-radius: 25px;
+    left: 10px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-size: 12px;
+    font-weight: 700;
+    color: #5B5B5B;
+}

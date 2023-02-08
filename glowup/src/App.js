@@ -9,6 +9,8 @@ import store from './store';
 import BookingsList from './components/Bookings/BookingsList';
 import GenerareCoupans from './pages/GenerareCoupans';
 import Coupans from './pages/Coupans';
+import Saloons from './pages/Saloons';
+import Services from './pages/Services';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,7 +30,10 @@ const App = () => {
         <Routes>
           <Route exact path='/' element={isAuthenticated ? <BookingsList /> : <Login />} />
           <Route exact path='/create-coupans' element={isAuthenticated ? <GenerareCoupans /> : <Login />} />
-          <Route exact path='/coupans' element={isAuthenticated ? <Coupans/> : <Login />} />
+          <Route exact path='/coupans' element={isAuthenticated ? <Coupans /> : <Login />} />
+          <Route exact path='/saloons' element={isAuthenticated ? <Saloons /> : <Login />} />
+          <Route exact path='/saloon/:id/services' element={isAuthenticated ? <Services/> : <Login />} />
+
         </Routes>
       </Router>
     </div>

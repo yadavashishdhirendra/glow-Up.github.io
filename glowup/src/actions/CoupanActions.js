@@ -33,7 +33,6 @@ export const deleteCoupanAction = (id) => async (dispatch) => {
       try {
             dispatch({ type: DELETE_COUPAN_REQUEST })
             const { data } = await axios.delete(`api/v1/delete-coupan/${id}`)
-            console.log(data)
             dispatch({ type: DELETE_COUPAN_SUCCESS, payload: data.deletedCoupan })
       } catch (error) {
             console.log(error)
