@@ -31,7 +31,6 @@ const Saloons = () => {
       minWidth: 100,
       flex: 0.5,
     },
-
     {
       field: "actions",
       headerName: "Actions",
@@ -40,18 +39,21 @@ const Saloons = () => {
       flex: 0.5,
       sortable: false,
       renderCell: (params) => {
+        console.log(params.row)
         return (
           <>
-            <Link to={`/saloon/${params.getValue(params.id, "id")}/services`}>view details</Link>
+            <Link to={`/saloon/${params.getValue(params.id, "id")}/services/${params.row.owner_id}`}>
+              view services
+            </Link>
           </>
         );
       },
     },
   ];
-  const rows = [];
+  const saloonData = [];
   saloons &&
     saloons.forEach((saloon) => {
-      rows.push({
+      saloonData.push({
         id: saloon._id,
         name: saloon.shopname,
         owner_id: saloon.owner,
@@ -65,7 +67,7 @@ const Saloons = () => {
       <div className="data-table-wrapper">
         <h1>Saloons</h1>
         <DataGrid
-          rows={rows}
+          rows={saloonData}
           columns={columns}
           pageSize={15}
           autoHeight

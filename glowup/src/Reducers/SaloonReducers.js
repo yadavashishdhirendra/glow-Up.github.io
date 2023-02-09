@@ -1,6 +1,6 @@
 import {
       FETCH_ALL_SALOONS_ERROR, FETCH_ALL_SALOONS_REQUEST, FETCH_ALL_SALOONS_SUCCESS,
-      GET_SERVICES_ERROR,GET_SERVICES_REQUEST,GET_SERVICES_SUCCESS
+      GET_SERVICES_ERROR, GET_SERVICES_REQUEST, GET_SERVICES_SUCCESS, UPDATE_SERVICES_ERROR, UPDATE_SERVICES_REQUEST, UPDATE_SERVICES_RESET, UPDATE_SERVICES_SUCCESS
 } from "../constants/SaloonConstants";
 let initialState = {
       saloons: []
@@ -40,6 +40,31 @@ export const getServicesReducer = (state = {}, action) => {
                   return {
                         loading: false,
                         error: action.payload
+                  }
+            default:
+                  return state
+      }
+}
+export const updateServicesReducer = (state = {}, action) => {
+      switch (action.type) {
+            case UPDATE_SERVICES_REQUEST:
+                  return {
+                        updating: true
+                  }
+            case UPDATE_SERVICES_SUCCESS:
+                  return {
+                        updating: false,
+                        success: action.payload.success,
+                        service: action.payload.response
+                  }
+            case UPDATE_SERVICES_ERROR:
+                  return {
+                        updating: false,
+                        error: action.payload
+                  }
+            case UPDATE_SERVICES_RESET:
+                  return {
+                        updating: null,
                   }
             default:
                   return state

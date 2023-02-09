@@ -11,6 +11,7 @@ import GenerareCoupans from './pages/GenerareCoupans';
 import Coupans from './pages/Coupans';
 import Saloons from './pages/Saloons';
 import Services from './pages/Services';
+import Employees from './pages/Employees';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,8 +33,8 @@ const App = () => {
           <Route exact path='/create-coupans' element={isAuthenticated ? <GenerareCoupans /> : <Login />} />
           <Route exact path='/coupans' element={isAuthenticated ? <Coupans /> : <Login />} />
           <Route exact path='/saloons' element={isAuthenticated ? <Saloons /> : <Login />} />
-          <Route exact path='/saloon/:id/services' element={isAuthenticated ? <Services/> : <Login />} />
-
+          <Route exact path='/saloon/:id/services/:owner' element={isAuthenticated ? <Services /> : <Login />} />
+          <Route exact path='/service/:id/employees' element={isAuthenticated ? <Employees /> : <Login />} />
         </Routes>
       </Router>
     </div>
