@@ -149,6 +149,21 @@ const Services = () => {
       flex: 0.5,
     },
     {
+      field: "services",
+      headerName: "Services",
+      minWidth: 500,
+      flex: 30,
+      renderCell: (params) => {
+        return (
+          <div style={{width:"50%",overflow:"scroll"}}>
+            {
+              params?.value?.toString()
+           }
+         </div>
+        )
+      }
+    },
+    {
       field: "actions",
       headerName: "Actions",
       minWidth: 150,

@@ -1,4 +1,4 @@
-import { DELETE_EMPLOYEE_ERROR, DELETE_EMPLOYEE_REQUEST, DELETE_EMPLOYEE_SUCCESS, GET_ALL_EMPLOYEES_ERROR, GET_ALL_EMPLOYEES_REQUEST, GET_ALL_EMPLOYEES_SUCCESS, GET_EMPLOYEES_ERROR, GET_EMPLOYEES_REQUEST, GET_EMPLOYEES_SUCCESS } from "../constants/EmployeeConstants";
+import { DELETE_EMPLOYEE_ERROR, DELETE_EMPLOYEE_FROM_SERVICE_ERROR, DELETE_EMPLOYEE_FROM_SERVICE_REQUEST, DELETE_EMPLOYEE_FROM_SERVICE_SUCCESS, DELETE_EMPLOYEE_REQUEST, DELETE_EMPLOYEE_SUCCESS, GET_ALL_EMPLOYEES_ERROR, GET_ALL_EMPLOYEES_REQUEST, GET_ALL_EMPLOYEES_SUCCESS, GET_EMPLOYEES_ERROR, GET_EMPLOYEES_REQUEST, GET_EMPLOYEES_SUCCESS } from "../constants/EmployeeConstants";
 
 
 export const getEmployeesReducer = (state = {}, action) => {
@@ -28,15 +28,18 @@ export const getEmployeesReducer = (state = {}, action) => {
 export const deleteEmployeeReducer = (state = {}, action) => {
       switch (action.type) {
             case DELETE_EMPLOYEE_REQUEST:
+            case DELETE_EMPLOYEE_FROM_SERVICE_REQUEST:
                   return {
                         deleting: true
                   }
             case DELETE_EMPLOYEE_SUCCESS:
+            case DELETE_EMPLOYEE_FROM_SERVICE_SUCCESS:
                   return {
                         deleting: false,
                         deleted: action.payload
                   }
             case DELETE_EMPLOYEE_ERROR:
+            case DELETE_EMPLOYEE_FROM_SERVICE_ERROR:
                   return {
                         deleting: null,
                         error: action.payload
