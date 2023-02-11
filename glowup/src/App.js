@@ -12,6 +12,7 @@ import Coupans from './pages/Coupans';
 import Saloons from './pages/Saloons';
 import Services from './pages/Services';
 import Employees from './pages/Employees';
+import EditEmployee from './pages/EditEmployee';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const App = () => {
           <Route exact path='/saloons' element={isAuthenticated ? <Saloons /> : <Login />} />
           <Route exact path='/saloon/:id/services/:owner' element={isAuthenticated ? <Services /> : <Login />} />
           <Route exact path='/service/:id/employees' element={isAuthenticated ? <Employees /> : <Login />} />
+          <Route exact path='/edit/employee/:id' element={isAuthenticated ? <EditEmployee/> : <Login />} />
         </Routes>
       </Router>
     </div>

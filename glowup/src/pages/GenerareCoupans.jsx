@@ -12,7 +12,7 @@ const GenerareCoupans = () => {
   const [disPer, setDisPer] = useState(0);
   const [maxDis, setMaxDis] = useState(0);
   const [condition, setCondition] = useState();
-  const [category, setCategory] = useState();
+  const [category, setCategory] = useState([]);
   const { coupan, error } = useSelector((state) => state.newCoupan);
   const dispatch = useDispatch();
   const navigate = useNavigate();

@@ -15,10 +15,10 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UPDATE_SERVICES_RESET } from "../constants/SaloonConstants";
-import { Button } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { AiFillEdit } from "react-icons/ai";
 const Services = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -155,13 +155,11 @@ const Services = () => {
       flex: 30,
       renderCell: (params) => {
         return (
-          <div style={{width:"50%",overflow:"scroll"}}>
-            {
-              params?.value?.toString()
-           }
-         </div>
-        )
-      }
+          <div style={{ width: "50%", overflow: "scroll" }}>
+            {params?.value?.toString()}
+          </div>
+        );
+      },
     },
     {
       field: "actions",
@@ -171,11 +169,23 @@ const Services = () => {
       sortable: false,
       renderCell: (params) => {
         return (
-          <>
-            <Button onClick={() => confirmDelete(params.id)}>
-              <DeleteIcon style={{ color: "black" }} />
-            </Button>
-          </>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width:"50%"
+            }}
+          >
+            <DeleteIcon
+              style={{ color: "black" }}
+              onClick={() => confirmDelete(params.id)}
+            />
+
+            <Link to={`/edit/employee/${params.id}`}>
+              <AiFillEdit style={{ color: "black", fontSize: "24px" }} />
+            </Link>
+          </div>
         );
       },
     },
@@ -246,7 +256,6 @@ const Services = () => {
               onSelectionModelChange={(itm) => {
                 setEmpids(itm);
               }}
-              pageSize={8}
               autoHeight
               sortingOrder="null"
             />

@@ -4,7 +4,7 @@ import thunk from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
 import { createCoupanReducer, deleteCoupanReducer, fetchAllCoupansReducer } from "./Reducers/CoupanReducers";
 import { fetchAllSaloonsReducer, getServicesReducer, updateServicesReducer } from "./Reducers/SaloonReducers";
-import { deleteEmployeeReducer, getEmployeesReducer } from "./Reducers/EmployeesReducer";
+import { deleteEmployeeReducer, editEmployeeReducer, getEmployeesReducer } from "./Reducers/EmployeesReducer";
 const reducer = combineReducers({
         user: userReducer,
         bookings: bookingsReducer,
@@ -15,7 +15,8 @@ const reducer = combineReducers({
         services: getServicesReducer,
         employees: getEmployeesReducer,
         updateServices: updateServicesReducer,
-        deleteEmployee:deleteEmployeeReducer
+        deleteEmployee: deleteEmployeeReducer,
+        editEmployee:editEmployeeReducer
 })
 
 let initialState = {}

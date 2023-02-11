@@ -9,7 +9,6 @@ import { Button } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { DataGrid } from "@material-ui/data-grid";
 import SideBar from "../components/Sidebar/Sidebar";
-
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css";
 const Employees = () => {
