@@ -135,27 +135,27 @@ const Services = () => {
       minWidth: 150,
       flex: 1,
     },
-    { field: "intime", headerName: "In Time", minWidth: 100, flex: 0.5 },
+    { field: "intime", headerName: "In Time", minWidth: 150, flex: 1 },
     {
       field: "outtime",
       headerName: "Out Time",
-      minWidth: 100,
-      flex: 0.5,
+      minWidth: 150,
+      flex: 1,
     },
     {
       field: "status",
       headerName: "Status",
-      minWidth: 100,
-      flex: 0.5,
+      minWidth: 150,
+      flex: 1,
     },
     {
       field: "services",
       headerName: "Services",
-      minWidth: 500,
-      flex: 30,
+      minWidth: 150,
+      flex: 10,
       renderCell: (params) => {
         return (
-          <div style={{ width: "50%", overflow: "scroll" }}>
+          <div style={{overflow: "scroll" }}>
             {params?.value?.toString()}
           </div>
         );
