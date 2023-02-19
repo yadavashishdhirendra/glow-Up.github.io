@@ -30,13 +30,13 @@ const Coupans = () => {
   }, [dispatch,deletedCoupan]);
 
   const columns = [
-    { field: "id", headerName: "Coupan Id", minWidth: 200, flex: 0.8 },
+    { field: "id", headerName: "Coupan Id", minWidth: 250, flex:1 },
     { field: "name", headerName: "Name", minWidth: 150, flex: 0.5 },
     {
       field: "code",
       headerName: "Code",
-      minWidth: 150,
-      flex: 1,
+      minWidth: 200,
+      flex: 2,
     },
     {
       field: "description",
@@ -47,14 +47,26 @@ const Coupans = () => {
     {
       field: "category",
       headerName: "Category",
-      minWidth: 100,
+      minWidth: 200,
+      flex: 1,
+    },
+    {
+      field: "expireAt",
+      headerName: "Expiring On",
+      minWidth: 270,
       flex: 0.5,
     },
     {
-      field: "condition",
-      headerName: "Condition",
+      field: "all_vendors",
+      headerName: "Applicable on Saloons",
       minWidth: 270,
       flex: 0.5,
+    },
+    {
+      field: "selected_vendors",
+      headerName: "Selected Saloons",
+      minWidth: 270,
+      flex: 5,
     },
     {
       field: "actions",
@@ -78,18 +90,6 @@ const Coupans = () => {
       },
     },
   ];
-  const rows = [];
-  coupans &&
-    coupans.forEach((coupan) => {
-      rows.push({
-        id: coupan._id,
-        name: coupan.name,
-        description: coupan.description,
-        code: coupan.code,
-        condition: coupan.condition,
-        category: coupan.category,
-      });
-    });
   return (
     <div>
       <SideBar />
@@ -101,7 +101,7 @@ const Coupans = () => {
         />
         <h1>Coupans</h1>
         <DataGrid
-          rows={rows}
+          rows={coupans?.length?coupans:[]}
           columns={columns}
           pageSize={15}
           autoHeight

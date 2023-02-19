@@ -128,7 +128,7 @@ const Services = () => {
     },
   ];
   const employeesColumn = [
-    { field: "id", headerName: "Employee Id", minWidth: 150, flex: 1 },
+    { field: "id", headerName: "Employee Id", minWidth: 250, flex: 2 },
     {
       field: "name",
       headerName: "Name",

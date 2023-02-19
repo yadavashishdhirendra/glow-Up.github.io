@@ -13,7 +13,6 @@ const GenerareCoupans = () => {
   const [description, setDescription] = useState();
   const [disPer, setDisPer] = useState(0);
   const [maxDis, setMaxDis] = useState(0);
-  const [condition, setCondition] = useState();
   const [startDate, setStartState] = useState();
   const [endDate, setEndDate] = useState();
   const [category, setCategory] = useState([]);
@@ -30,14 +29,7 @@ const GenerareCoupans = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     console.log(selectedVendors);
-    if (
-      name === "" ||
-      description === "" ||
-      !disPer ||
-      !maxDis ||
-      condition === "" ||
-      category === ""
-    ) {
+    if ( name === "" ||description === "" ||!disPer ||!maxDis ||category === ""||!startDate||!endDate||!minAmount||category===""||vendors==="") {
       alert("please fill all fields");
     } else {
       dispatch(
@@ -47,7 +39,6 @@ const GenerareCoupans = () => {
           maxDis,
           disPer,
           category,
-          condition,
           startDate,
           endDate,
           minAmount,
@@ -100,6 +91,7 @@ const GenerareCoupans = () => {
                   name={"Name"}
                   inputType="text"
                   id="Name"
+                  required={true}
                 />
                 <Input
                   laBel={"Description"}
@@ -109,6 +101,7 @@ const GenerareCoupans = () => {
                   name={"description"}
                   inputType="text"
                   id="description"
+                  required={true}
                 />
                 <Input
                   laBel={"Discount Percentage"}
@@ -120,6 +113,7 @@ const GenerareCoupans = () => {
                   id="disPer"
                   min="0"
                   max="100"
+                  required={true}
                 />
                 <Input
                   laBel={"Max Discount in Rs"}
@@ -130,6 +124,7 @@ const GenerareCoupans = () => {
                   inputType="number"
                   id="maxDis"
                   min="0"
+                  required={true}
                 />
                 <Input
                   laBel={"Min order amount"}
@@ -140,6 +135,7 @@ const GenerareCoupans = () => {
                   inputType="number"
                   id="min_ord_am"
                   min="0"
+                  required={true}
                 />
                 <Input
                   laBel={"Usage Limit Per User"}
@@ -150,6 +146,7 @@ const GenerareCoupans = () => {
                   inputType="number"
                   id="limit"
                   min="0"
+                  required={true}
                 />
               </div>
               <div style={{ width: "200px" }}></div>
@@ -162,6 +159,7 @@ const GenerareCoupans = () => {
                     id="Category"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
+                    required={true}
                   >
                     {serviceCtaegories.map((cat) => (
                       <option value={cat} key={cat}>
@@ -171,22 +169,14 @@ const GenerareCoupans = () => {
                   </select>
                 </div>
                 <Input
-                  laBel={"Condition"}
-                  value={condition}
-                  onChange={(e) => setCondition(e.target.value)}
-                  htmlFor="condition"
-                  name={"condition"}
-                  inputType="text"
-                  id="condition"
-                />
-                <Input
                   laBel={"Start Date"}
                   value={startDate}
                   onChange={(e) => setStartState(e.target.value)}
                   htmlFor="start-date"
                   name={"start-date"}
-                  inputType="datetime-local"
+                  inputType="date"
                   id="start-date"
+                  required={true}
                 />
                 <Input
                   laBel={"End Date"}
@@ -194,8 +184,9 @@ const GenerareCoupans = () => {
                   onChange={(e) => setEndDate(e.target.value)}
                   htmlFor="end-date"
                   name={"end-date"}
-                  inputType="datetime-local"
+                  inputType="date"
                   id="end-date"
+                  required={true}
                 />
                 <Input
                   laBel={"Re-usable After Days"}
@@ -205,6 +196,7 @@ const GenerareCoupans = () => {
                   name={"re-use"}
                   inputType="number"
                   id="re-use"
+                  required={true}
                 />
 
                 <div>
@@ -215,6 +207,7 @@ const GenerareCoupans = () => {
                     id="vendors"
                     value={vendors}
                     onChange={(e) => setVendors(e.target.value)}
+                    required
                   >
                     <option value=""></option>
                     <option value="yes">Yes</option>

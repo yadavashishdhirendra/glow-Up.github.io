@@ -9,6 +9,8 @@ import Input from "../components/Input/Input";
 import SideBar from "../components/Sidebar/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css";
 const EditEmployee = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -19,18 +21,35 @@ const EditEmployee = () => {
   const [intime, setIntime] = useState("");
   const [outtime, setOuttime] = useState("");
   const [status, setStatus] = useState("");
+
   const updateEmployee = (e) => {
     e.preventDefault();
-    dispatch(
-      editEmployeeAction(
-        params.id,
-        firstName,
-        lastName,
-        intime,
-        outtime,
-        status
-      )
-    );
+    confirmAlert({
+      title: "Update Employee",
+      message: "Are you sure to do this?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () =>
+            dispatch(
+              editEmployeeAction(
+                params.id,
+                firstName,
+                lastName,
+                intime,
+                outtime,
+                status
+              )
+            ),
+        },
+        {
+          label: "No",
+          onClick: () => {},
+        },
+      ],
+      closeOnClickOutside: true,
+      closeOnEscape: true,
+    });
   };
   useEffect(() => {
     dispatch(getSingleEmployeeAction(params.id));
