@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllBookings } from '../../actions/UserActions'
 import Loader from '../Loader/Loader'
 
-
 const BookingsList = () => {
     const dispatch = useDispatch();
     const { bookings, error, loading } = useSelector((state) => state.bookings);
