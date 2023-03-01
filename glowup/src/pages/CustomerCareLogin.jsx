@@ -1,36 +1,33 @@
 import React, { useEffect, useState } from "react";
-import MetaTitle from "../MetaTitle/MetaTitle";
-import "./Login.css";
-import GirlImage from "../Assets/Image/GIRL_BACKPACK 1.png";
-import GlowupLogo from "../Assets/Logo/rsz_glow_up_logo-04_1 1.png";
+import MetaTitle from "../components/MetaTitle/MetaTitle";
+import GirlImage from "../components/Assets/Image/GIRL_BACKPACK 1.png";
+import GlowupLogo from "../components/Assets/Logo/rsz_glow_up_logo-04_1 1.png";
 import { useDispatch } from "react-redux";
-import { loadUser, loginUser } from "../../actions/UserActions";
 import { useSelector } from "react-redux";
-import Input from "../Input/Input";
-import { Link } from "react-router-dom";
-const Login = ({ history }) => {
+import Input from "../components/Input/Input";
+import {useNavigate } from "react-router-dom";
+import { CareloginUser } from "../actions/CareUserAction";
+const CustomerCareLogin = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated, loading, error } = useSelector(
-    (state) => state.user
+  const { careUserLoggedin, loading} = useSelector(
+    (state) => state.customerCare
   );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleLogin = async (e) => {
+  const navigate = useNavigate();
+  const loginHandle = (e) => {
     e.preventDefault();
-    await dispatch(loginUser(email, password));
-    dispatch(loadUser());
+    if (!email || !password) {
+      alert("plesae fill all fields");
+    } else {
+      dispatch(CareloginUser(email, password));
+    }
   };
-
   useEffect(() => {
-    if (isAuthenticated === true) {
-      history.push("/bookings");
+    if (careUserLoggedin) {
+      navigate("/todays-bookings");
     }
-    if (error) {
-      alert(error);
-    }
-  }, [isAuthenticated, history, error]);
-
+  },[navigate,careUserLoggedin]);
   return (
     <>
       <MetaTitle title="Glow Up Salon & Scheduling - Login" />
@@ -38,14 +35,8 @@ const Login = ({ history }) => {
         <div className="login-grid-row">
           <div>
             <img src={GlowupLogo} alt="Glowup" />
-            <p>Hello Again!</p>
-            <p>
-              <span>Good Morning!</span> Welcome back you’ve been missed.
-            </p>
-            <form
-              onSubmit={(e) => handleLogin(e)}
-              className="login-form-wrapper"
-            >
+            <p>Customer Care Login</p>
+            <form onSubmit={loginHandle} className="login-form-wrapper">
               <Input
                 htmlFor={"email"}
                 laBel="Email"
@@ -64,9 +55,6 @@ const Login = ({ history }) => {
                 id="password"
                 name="password"
               />
-              <Link to={"/customer-care/login"}>
-                <p>Customer Care Login?</p>
-              </Link>
               <div className="login-btn">
                 <button
                   type="submit"
@@ -86,4 +74,4 @@ const Login = ({ history }) => {
   );
 };
 
-export default Login;
+export default CustomerCareLogin;

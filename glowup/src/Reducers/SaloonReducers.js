@@ -1,4 +1,7 @@
 import {
+      ACCOUNTS_ERROR,
+      ACCOUNTS_REQUEST,
+      ACCOUNTS_SUCCESS,
       FETCH_ALL_SALOONS_ERROR, FETCH_ALL_SALOONS_REQUEST, FETCH_ALL_SALOONS_SUCCESS,
       GET_SERVICES_ERROR, GET_SERVICES_REQUEST, GET_SERVICES_SUCCESS, UPDATE_SERVICES_ERROR, UPDATE_SERVICES_REQUEST, UPDATE_SERVICES_RESET, UPDATE_SERVICES_SUCCESS
 } from "../constants/SaloonConstants";
@@ -8,15 +11,18 @@ let initialState = {
 export const fetchAllSaloonsReducer = (state = initialState, action) => {
       switch (action.type) {
             case FETCH_ALL_SALOONS_REQUEST:
+            case ACCOUNTS_REQUEST:
                   return {
                         loading: true
                   }
             case FETCH_ALL_SALOONS_SUCCESS:
+            case ACCOUNTS_SUCCESS:
                   return {
                         loading: false,
                         saloons: action.payload
                   }
             case FETCH_ALL_SALOONS_ERROR:
+            case ACCOUNTS_ERROR:
                   return {
                         loading: false,
                         error: action.payload

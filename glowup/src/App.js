@@ -13,10 +13,16 @@ import Saloons from './pages/Saloons';
 import Services from './pages/Services';
 import Employees from './pages/Employees';
 import EditEmployee from './pages/EditEmployee';
+import Accounts from './pages/Accounts';
+import SaloonBookings from './pages/SaloonBookings';
+import CustomersBookings from './pages/CustomersBookings';
+import CustomerCareLogin from './pages/CustomerCareLogin';
+import { CareUserload } from './actions/CareUserAction';
 
 const App = () => {
   const dispatch = useDispatch();
-  const {isAuthenticated} = useSelector((state)=> state.user)
+  const { isAuthenticated } = useSelector((state) => state.user)
+  const { careUserLoggedin }=useSelector(state=>state.customerCare)
   useEffect(() => {
     WebFont.load({
       google: {
@@ -24,6 +30,7 @@ const App = () => {
       }
     })
     store.dispatch(loadUser())
+    store.dispatch(CareUserload())
   }, [dispatch])
 
   return (
@@ -36,7 +43,11 @@ const App = () => {
           <Route exact path='/saloons' element={isAuthenticated ? <Saloons /> : <Login />} />
           <Route exact path='/saloon/:id/services/:owner' element={isAuthenticated ? <Services /> : <Login />} />
           <Route exact path='/service/:id/employees' element={isAuthenticated ? <Employees /> : <Login />} />
-          <Route exact path='/edit/employee/:id' element={isAuthenticated ? <EditEmployee/> : <Login />} />
+          <Route exact path='/edit/employee/:id' element={isAuthenticated ? <EditEmployee /> : <Login />} />
+          <Route exact path='/accounting' element={isAuthenticated ? <Accounts /> : <Login />} />
+          <Route exact path='/saloon/:id/bookings' element={isAuthenticated ? <SaloonBookings/> : <Login />} />
+          <Route exact path='/todays-bookings' element={careUserLoggedin ? <CustomersBookings /> : <CustomerCareLogin />} />
+          <Route exact path='/customer-care/login' element={<CustomerCareLogin/>} />
         </Routes>
       </Router>
     </div>
