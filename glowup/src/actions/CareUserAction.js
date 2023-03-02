@@ -1,4 +1,4 @@
-import { LOAD_USER_ERROR, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_ERROR, LOGOUT_SUCCESS } from '../constants/UserConstants';
+import { LOAD_USER_ERROR, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_ERROR, LOGOUT_SUCCESS,CLEAR_ERRORS } from '../constants/UserConstants';
 import axios from 'axios';
 export const CareloginUser = (email, password) => async (dispatch) => {
       try {
@@ -17,8 +17,11 @@ export const CareloginUser = (email, password) => async (dispatch) => {
       } catch (error) {
             dispatch({
                   type: LOGIN_ERROR,
-                  payload: error.response.data.message
+                  payload: error.response.data
             })
+            setTimeout(() => {
+                  dispatch({type:CLEAR_ERRORS})
+            },5000)
       }
 }
 

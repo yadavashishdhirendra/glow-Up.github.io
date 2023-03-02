@@ -5,11 +5,13 @@ import GlowupLogo from "../components/Assets/Logo/rsz_glow_up_logo-04_1 1.png";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Input from "../components/Input/Input";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CareloginUser } from "../actions/CareUserAction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const CustomerCareLogin = () => {
   const dispatch = useDispatch();
-  const { careUserLoggedin, loading} = useSelector(
+  const { careUserLoggedin, loading, error } = useSelector(
     (state) => state.customerCare
   );
   const [email, setEmail] = useState("");
@@ -27,13 +29,21 @@ const CustomerCareLogin = () => {
     if (careUserLoggedin) {
       navigate("/todays-bookings");
     }
-  },[navigate,careUserLoggedin]);
+    if (error) {
+      toast(JSON.stringify(error));
+    }
+  }, [navigate, careUserLoggedin, error]);
   return (
     <>
       <MetaTitle title="Glow Up Salon & Scheduling - Login" />
       <div className="banner-wrapper">
         <div className="login-grid-row">
           <div>
+            <ToastContainer
+              position="top-center"
+              hideProgressBar={true}
+              theme="colored"
+            />
             <img src={GlowupLogo} alt="Glowup" />
             <p>Customer Care Login</p>
             <form onSubmit={loginHandle} className="login-form-wrapper">
@@ -50,7 +60,7 @@ const CustomerCareLogin = () => {
                 htmlFor={"password"}
                 laBel="Password"
                 value={password}
-                inputType="text"
+                inputType="password"
                 onChange={(e) => setPassword(e.target.value)}
                 id="password"
                 name="password"

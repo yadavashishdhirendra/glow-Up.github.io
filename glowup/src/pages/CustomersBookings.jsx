@@ -54,7 +54,15 @@ const CustomersBookings = () => {
       minWidth: 200,
     },
     { field: "payment", headerName: "Payment", flex: 1, minWidth: 150 },
-    { field: "date", headerName: "Date", flex: 1, minWidth: 150 },
+    {
+      field:"booking_date_time",
+      headerName: "Date",
+      flex: 1,
+      minWidth: 250,
+      renderCell: (params) => {
+          return <>{new Date(params?.formattedValue).toLocaleString()}</>;
+      }
+    },
   ];
   useEffect(() => {
     dispatch(getTodaysBooking());
@@ -91,7 +99,7 @@ const CustomersBookings = () => {
       <div style={{ margin: "50px" }}>
         <div className="data-table-wrapper">
           <h1>Future Bookings</h1>
-          <p>{bookings?.length} Records</p>
+          <p>{dateBooking?.length} Records</p>
           <div
             style={{
               display: "flex",
