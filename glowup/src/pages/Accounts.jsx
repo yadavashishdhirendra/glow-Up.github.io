@@ -43,9 +43,7 @@ const Accounts = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link
-              to={`/saloon/${params.getValue(params.id, "id")}/bookings`}
-            >
+            <Link to={`/saloon/${params.getValue(params.id, "id")}/bookings`}>
               view bookings
             </Link>
           </>
@@ -86,7 +84,7 @@ const Accounts = () => {
         {error && <p>{error}</p>}
         {saloons?.length ? (
           <DataGrid
-            rows={saloons?.length ? saloons : []}
+            rows={saloons?.length > 0 ? saloons : []}
             columns={columns}
             pageSize={15}
             autoHeight

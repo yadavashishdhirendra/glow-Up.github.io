@@ -7,9 +7,10 @@ import { useDispatch } from "react-redux";
 import { loadUser, loginUser } from "../../actions/UserActions";
 import { useSelector } from "react-redux";
 import Input from "../Input/Input";
-import { Link } from "react-router-dom";
-const Login = ({ history }) => {
+import { Link, useNavigate } from "react-router-dom";
+const Login = () => {
   const dispatch = useDispatch();
+  const navigate=useNavigate()
   const { isAuthenticated, loading, error } = useSelector(
     (state) => state.user
   );
@@ -23,13 +24,13 @@ const Login = ({ history }) => {
   };
 
   useEffect(() => {
-    if (isAuthenticated === true) {
-      history.push("/bookings");
+    if (isAuthenticated) {
+      navigate("/bookings")
     }
     if (error) {
       alert(error);
     }
-  }, [isAuthenticated, history, error]);
+  }, [isAuthenticated,navigate, error]);
 
   return (
     <>

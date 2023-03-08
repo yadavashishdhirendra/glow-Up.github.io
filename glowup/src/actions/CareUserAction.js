@@ -1,5 +1,6 @@
-import { LOAD_USER_ERROR, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_ERROR, LOGOUT_SUCCESS,CLEAR_ERRORS } from '../constants/UserConstants';
+import { LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_ERROR, LOGOUT_SUCCESS,CLEAR_ERRORS } from '../constants/UserConstants';
 import axios from 'axios';
+import {CARE_USER_ERROR,CARE_USER_REQUEST,CARE_USER_SUCCESS} from "../constants/UserConstants"
 export const CareloginUser = (email, password) => async (dispatch) => {
       try {
             dispatch({
@@ -28,16 +29,16 @@ export const CareloginUser = (email, password) => async (dispatch) => {
 export const CareUserload = () => async (dispatch) => {
       try {
             dispatch({
-                  type: LOAD_USER_REQUEST
+                  type: CARE_USER_REQUEST
             })
             const { data } = await axios.get(`/api/v2/customer-care/profile`)
             dispatch({
-                  type: LOAD_USER_SUCCESS,
+                  type: CARE_USER_SUCCESS,
                   payload: data.user
             })
       } catch (error) {
             dispatch({
-                  type: LOAD_USER_ERROR,
+                  type: CARE_USER_ERROR,
                   payload: error.response.data.message
             })
       }

@@ -18,11 +18,13 @@ import SaloonBookings from './pages/SaloonBookings';
 import CustomersBookings from './pages/CustomersBookings';
 import CustomerCareLogin from './pages/CustomerCareLogin';
 import { CareUserload } from './actions/CareUserAction';
+import ProctectedDashBoardRoute from './components/ProctectedDashBoardRoute';
+import CcProtectedRoute from './components/CcRoutes';
 
 const App = () => {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.user)
-  const { careUserLoggedin }=useSelector(state=>state.customerCare)
+  const { careUserLoggedin } = useSelector(state => state.customerCare)
   useEffect(() => {
     WebFont.load({
       google: {
@@ -36,18 +38,61 @@ const App = () => {
   return (
     <div>
       <Router>
+
         <Routes>
-          <Route exact path='/' element={isAuthenticated ? <BookingsList /> : <Login />} />
-          <Route exact path='/create-coupans' element={isAuthenticated ? <GenerareCoupans /> : <Login />} />
-          <Route exact path='/coupans' element={isAuthenticated ? <Coupans /> : <Login />} />
-          <Route exact path='/saloons' element={isAuthenticated ? <Saloons /> : <Login />} />
-          <Route exact path='/saloon/:id/services/:owner' element={isAuthenticated ? <Services /> : <Login />} />
-          <Route exact path='/service/:id/employees' element={isAuthenticated ? <Employees /> : <Login />} />
-          <Route exact path='/edit/employee/:id' element={isAuthenticated ? <EditEmployee /> : <Login />} />
-          <Route exact path='/accounting' element={isAuthenticated ? <Accounts /> : <Login />} />
-          <Route exact path='/saloon/:id/bookings' element={isAuthenticated ? <SaloonBookings/> : <Login />} />
-          <Route exact path='/todays-bookings' element={careUserLoggedin ? <CustomersBookings /> : <CustomerCareLogin />} />
-          <Route exact path='/customer-care/login' element={<CustomerCareLogin/>} />
+          <Route path='/' element={<Login />} />
+          <Route exact path='/bookings' element={
+            <ProctectedDashBoardRoute islogged={isAuthenticated}>
+              <BookingsList />
+            </ProctectedDashBoardRoute>
+          } />
+
+          <Route exact path='/create-coupans' element={
+            <ProctectedDashBoardRoute islogged={isAuthenticated}>
+              <GenerareCoupans />
+            </ProctectedDashBoardRoute>
+          } />
+          <Route exact path='/coupans' element={
+            <ProctectedDashBoardRoute islogged={isAuthenticated}>
+              <Coupans />
+            </ProctectedDashBoardRoute>
+          } />
+          <Route exact path='/saloons' element={
+            <ProctectedDashBoardRoute islogged={isAuthenticated}>
+              <Saloons />
+            </ProctectedDashBoardRoute>
+          } />
+          <Route exact path='/saloon/:id/services/:owner' element={
+            <ProctectedDashBoardRoute islogged={isAuthenticated}>
+              <Services />
+            </ProctectedDashBoardRoute>
+          } />
+          <Route exact path='/service/:id/employees' element={
+            <ProctectedDashBoardRoute islogged={isAuthenticated}>
+              <Employees />
+            </ProctectedDashBoardRoute>
+          } />
+          <Route exact path='/edit/employee/:id' element={
+            <ProctectedDashBoardRoute islogged={isAuthenticated}>
+              <EditEmployee />
+            </ProctectedDashBoardRoute>
+          } />
+          <Route exact path='/accounting' element={
+            <ProctectedDashBoardRoute islogged={isAuthenticated}>
+              <Accounts />
+            </ProctectedDashBoardRoute>
+          } />
+          <Route exact path='/saloon/:id/bookings' element={
+            <ProctectedDashBoardRoute islogged={isAuthenticated}>
+              <SaloonBookings />
+            </ProctectedDashBoardRoute>
+          } />
+
+          <Route exact path='/todays-bookings' element={
+            <CcProtectedRoute loggedIn={careUserLoggedin}>
+              <CustomersBookings />
+            </CcProtectedRoute>} />
+          <Route exact path='/customer-care/login' element={<CustomerCareLogin />} />
         </Routes>
       </Router>
     </div>
